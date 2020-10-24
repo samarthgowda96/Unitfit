@@ -5,16 +5,18 @@ import Login from './components/Login'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Navbar from './components/NavBar'
 import SignUp from './components/SignUp'
+import Header from './components/Header'
+import Registration from './components/Registration'
 
 function App() {
   return (
     <>
-    <Router>
-      <Route path='/signup' component ={SignUp} />
-    </Router>
+
+    <Header/>
 
     <div className="App">
       <Login/>
+      <Registration/>
       
      
      </div>

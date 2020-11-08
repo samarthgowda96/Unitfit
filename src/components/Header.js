@@ -1,9 +1,12 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+import {BrowserRouter as Router} from 'react-router-dom'
 function Header() {
     return(
-        <nav class="navbar navbar-dark bg-primary">
-            <div className="row col-12 d-flex justify-content-center text-white">
-            <span className="h3">Register</span>
+        <nav class="navbar navbar-dark" className='navbar'>
+            <div className="header">
+            <span className="title">Welcome to UnitFit</span>
+            
             </div>
         </nav>
     )

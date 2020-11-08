@@ -4,7 +4,9 @@
 /node_modules
 /.pnp
 .pnp.js
-
+.ReceipeCard.js
+.Recipes.js
+.RecipeList.js
 # testing
 /coverage
 

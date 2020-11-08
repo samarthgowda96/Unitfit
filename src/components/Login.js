@@ -1,50 +1,148 @@
 import React, { useState } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import {Link,Redirect,Switch,BrowserRouter as Router, Route} from 'react-router-dom';
+
+
+
+
+import Dashboard from './Dashboard'
 import './login.css'
+import Axios from 'axios'
+import AppWrapper from "./AppWrapper";
 
 
-export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+ 
+ export default function Login(){
+   
 
-  function validateForm() {
-    return email.length > 0 && password.length > 0;
+  const [usernameLogin, setUsernameLogin]= useState('');
+  const [passwordLogin, setPasswordLogin]= useState('');
+  const [loginStatus, setLoginStatus]= useState(false)
+  const [usernameLoginErr, setUsernameLoginErr]= useState({});
+  const [passwordLoginErr, setPasswordLoginErr]= useState({});
+  const login = () => {
+      Axios.post('http://localhost:9016/login', {
+          username: usernameLogin,
+          password: passwordLogin
+      }).then((response) => {
+          console.log(response.data[0]);
+          if(response.data.message){
+            setLoginStatus(false);
+            alert('please enter correct login credentials')
+          }else if (response.data[0]){
+            alert("this is working")
+            setLoginStatus(true);
+         
+          }
+      })
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
+const onSubmit=(e)=>{
+  e.preventDefault();
+  const isValid = formValidation();
+}
 
+const formValidation=()=>{
+  const usernameLoginErr ={};
+  const passwordLoginErr={};
+  let isValid= true;
+
+  if(usernameLogin.trim().length <8){
+    usernameLoginErr.userNameShort ='username is too short'
+    isValid='false'
+    
+  } 
+
+  if(usernameLogin.includes('@')){
+    usernameLoginErr.userNameEmail="Username must contain @"
+    isValid= false;
+    console.log('its working')
+  }
+  setUsernameLoginErr(usernameLoginErr)
+  setPasswordLoginErr(passwordLoginErr)
+  return isValid
+
+}
+
+ 
+  
+ 
+  
   return (
     
     <div className="Login">
-    <h1 className='names'>Welcome to UnitFit :)</h1>
-    <h2 className='title'> Sign In</h2>
-      <form onSubmit={handleSubmit}>
+   
+    <h2 className='titlelogin'> Sign In</h2>
+ 
+         
+      <form>
+      
         <FormGroup controlId="email" bsSize="large">
           <ControlLabel className='names'></ControlLabel>
+      
           <FormControl
+            name='Email'
             autoFocus
             type="email"
             placeholder="Email"
-            
-            value={email}
-            onChange={e => setEmail(e.target.value)}
+            value={usernameLogin}
+ 
+            {...Object.keys(usernameLoginErr).map((key)=>{
+          return <div style ={{color:'red '}}>{usernameLoginErr[key]} </div>
+          })}
+          
+            onChange={(e)=>{
+              setUsernameLogin(e.target.value);
+
+          }}
+          
+            //onChange={e => setEmail(e.target.value)}
           />
         </FormGroup>
         <FormGroup controlId="password" bsSize="large">
           <ControlLabel className='names'></ControlLabel>
           <FormControl
-            value={password}
-            onChange={e => setPassword(e.target.value)}
+         
+      
+            onChange={(e)=>{
+              setPasswordLogin(e.target.value);
+          }}
+ 
+          {...Object.keys(passwordLoginErr ).map((key)=>{
+            return <div style ={{color:'red '}}>{passwordLoginErr[key]} </div>
+            })}
+            
+          
             type="password"
             placeholder='Password'
+            value={passwordLogin}
+            
           />
+          
         </FormGroup>
-        <Button block bsSize="large" disabled={!validateForm()} type="submit" className='names'>
-          Login
-        </Button>
+
+     <Link to='/dashboard'>
+        <Button onClick={login} onSubmit={onSubmit} block bsSize="large"  type="submit" className='names' >
+        Login
+</Button>
+</Link>
+
+
+
+       
       </form>
+      
+      <AppWrapper status = {loginStatus}/>
+     
+  
+    
+     
+      
     </div>
-  );
-}
+  );}
+
+
+
+
+
+

@@ -60,3 +60,8 @@
     text-transform: uppercase;
     font-family: 'Josefin Sans', sans-serif;
 }
+
+.HeaderHome {
+    font-weight: 400;
+    padding-left: 50px;
+}

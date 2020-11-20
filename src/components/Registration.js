@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-
+import {Form,Button,Segment,Header} from 'semantic-ui-react'
+import{Input} from 'semantic-ui-react-form-validator'
 import Axios from 'axios';
 
 
@@ -97,9 +98,45 @@ function Registration() {
 
       
   return(
+    <Form>
+        
+        <Segment inverted tertiary>
+    <Header as='h2'>Create Account</Header></Segment>
+    <Segment inverted tertiary>
+    <Form.Input
+      error={{ content: 'Please enter your email address', pointing: 'below' }}
+      fluid
+      label='Email'
+      type='email'
+      placeholder='Email'
+      id='form-input-email'
+      validators={['required']}
+      errorMessages={['this field is required']}
+      onChange={(e)=>{
+        setUsernameRegistration(e.target.value);
+    }}
+    />
+    <Form.Input
+      error='Please enter your password'
+      fluid
+      label='Password'
+      placeholder='Password'
+      id='form-input-password'
+      type='password'
+      onChange={(e)=>{
+        setPasswordRegistration(e.target.value);
+    }}
+    />
    
+    <Link to='/DashBoard'>
+    <Button type='submit' onClick={register}>Submit</Button>
+    </Link>
+    </Segment>
+    
+  </Form>
+)
 
-        <div className="card col-12 col-lg-12 logins-card mt-1hv-center" className='card'>
+       /* <div className="card col-12 col-lg-12 logins-card mt-1hv-center" className='card'>
     
             <form>
                 <div className="form-group text-left">
@@ -159,6 +196,6 @@ function Registration() {
         </div>
    
     )
+}*/
 }
-
 export default Registration;

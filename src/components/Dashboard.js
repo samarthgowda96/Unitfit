@@ -1,41 +1,77 @@
-import React from 'react';
+import React,{Component} from 'react';
 import  { useState } from "react";
 import {BrowserRouter as Router} from 'react-dom'
 import Axios from 'axios'
 import {Button} from 'react-bootstrap'
-const users= ''
+import App from './workout/App'
+import{Menu} from 'semantic-ui-react'
 
-function Dashboard(){
-    const [name, setName]= useState('')
+const colors=[
+   
+    'grey'
+]
+
+
+class Menuu extends Component{
   
+    state = { activeItem: 'home' }
 
-const userData = () => {
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
+
+userData = () => {
     Axios.get('http://localhost:9016/dashboard', {
-       
-       
-    }).then((response) => {
+       }).then((response) => {
         console.log(response.data);
-        setName(response)
+        
     })
 }
-
- 
-  
-    return(
-        <div>
-
-      
-    
-        
- 
-        <Button onClick={userData} >
+render(){
+       
+    {/*
+        <Button onClick={userData}>
         getUsers {users.data}
-</Button>
+    </Button>
+    */} 
+    const { color } = this.props
+    const { activeItem } = this.state
+
+    return (
+        <div>
+      <Menu color={color} inverted widths={3}>
+        <Menu.Item
+          name='My Workout'
+          active={activeItem === 'home'}
+          onClick={this.handleItemClick}
+        />
+        <Menu.Item
+          name='My Recipes'
+          active={activeItem === 'messages'}
+          onClick={this.handleItemClick}
+        />
+        <Menu.Item
+          name='My Profile'
+          active={activeItem === 'friends'}
+          onClick={this.handleItemClick}
+        />
+      </Menu>
+    )
+  
+
+    
+   
+        <App />
 
 
             
            
         </div>
-    )
+    ) 
 }
-export default Dashboard;
+}
+const Dashboard = () => {
+    const menus = colors.map((color) => <Menuu color={color} key={color} />)
+  
+    return <div>{menus}</div>
+  }
+  export default Dashboard;

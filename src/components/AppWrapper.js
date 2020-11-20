@@ -2,26 +2,35 @@ import React, {Component} from 'react'
 import { Redirect } from 'react-router-dom'
 import Dashboard from './Dashboard';
 import {Route} from 'react-router-dom'
-import { getBsProps } from 'react-bootstrap/lib/utils/bootstrapUtils';
+ import {LoginContext} from '../context/LoginContext'
+import { useContext } from 'react';
 
-class AppWrapper extends Component{
-    constructor(props){
-        super(props)
-    }
-  render(){
-    {console.log(this.props)}
-    if(this.props.status) {
+const AppWrapper = () =>{
+  const [loginStatus, setLoginStatus] = useContext(LoginContext)
 
-      return <Redirect to="/login" />
+  //{console.log(loginStatus)}
+
+
+    if(loginStatus) {
+      return( 
+      <div>
+      <Route path='/dashboard' component={Dashboard} />
+    </div>
+      )
+
+    
+      
    
+  }
+  else if(loginStatus === false){
+    return( <Redirect to="/login" />
+      
+      )
   }
 
    return(
-     <div>
-       App wrapper
-       <Route path='/dashboard' component={Dashboard} />
-     </div>
+    <Redirect to="/login" />
    );
-  }
+  
 }
 export default AppWrapper;

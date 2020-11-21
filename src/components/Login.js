@@ -91,8 +91,8 @@ export default function Login() {
 }
 />
         
-    </FormGroup>
-</FormGroup>
+        </FormGroup>
+        </FormGroup>
         <Link to ='/dashboard'>
             <Button onClick = { login } onSubmit = { onSubmit } block bsSize = "large" type = "submit"className = 'names' >Login </Button> 
         </Link>

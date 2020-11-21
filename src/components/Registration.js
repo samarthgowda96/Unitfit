@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import {Form,Button,Segment,Header} from 'semantic-ui-react'
+import {Form,Button,Segment,Header,Divider} from 'semantic-ui-react'
 import{Input} from 'semantic-ui-react-form-validator'
 import Axios from 'axios';
+import './login.css'
+import { Grid } from 'react-bootstrap';
 
 
 function Registration() {
@@ -98,12 +100,18 @@ function Registration() {
 
       
   return(
+      <>
     <Form>
         
         <Segment inverted tertiary>
     <Header as='h2'>Create Account</Header></Segment>
+    
+    <div className='ui inverted divider column centered grid'>
     <Segment inverted tertiary>
+    <div className='six wide column'>
     <Form.Input
+    
+      className='Size'
       error={{ content: 'Please enter your email address', pointing: 'below' }}
       fluid
       label='Email'
@@ -116,7 +124,8 @@ function Registration() {
         setUsernameRegistration(e.target.value);
     }}
     />
-    <Form.Input
+    
+    <Form.Input 
       error='Please enter your password'
       fluid
       label='Password'
@@ -131,9 +140,18 @@ function Registration() {
     <Link to='/DashBoard'>
     <Button type='submit' onClick={register}>Submit</Button>
     </Link>
+    </div>
     </Segment>
+    </div>
+    
+    
+   
+    
+
+    
     
   </Form>
+  </>
 )
 
        /* <div className="card col-12 col-lg-12 logins-card mt-1hv-center" className='card'>

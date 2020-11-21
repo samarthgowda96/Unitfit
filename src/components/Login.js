@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import { Link, Redirect, Switch, BrowserRouter as Router, Route } from 'react-router-dom';
+import { Link, BrowserRouter as Router } from 'react-router-dom';
 
 import './login.css'
 import Axios from 'axios'
@@ -67,99 +67,39 @@ export default function Login() {
 
 
     return (
-
-        <
-        div className = "Login" >
-
-        <
-        h2 className = 'titlelogin' > Sign In < /h2>
-
-
-        <
-        form >
-
-        <
-        FormGroup controlId = "email"
-        bsSize = "large" >
-        <
-        ControlLabel className = 'names' > < /ControlLabel>
-
-        <
-        FormControl name = 'Email'
-        autoFocus type = "email"
-        placeholder = "Email"
-        value = { usernameLogin }
-
-        {...Object.keys(usernameLoginErr).map((key) => {
-                return <div style = {
-                    { color: 'red ' } } > { usernameLoginErr[key] } < /div>
-            })
-        }
-
-        onChange = {
-            (e) => {
-                setUsernameLogin(e.target.value);
-
+        <div className = "Login" >
+            <h2 className = 'titlelogin' > Sign In </h2>
+            <form>
+            <FormGroup controlId = "email" bsSize = "large" >
+            <ControlLabel className = 'names' > </ControlLabel>
+            <FormControl
+            name = 'Email'
+            autoFocus type = "email"
+            placeholder = "Email"
+            value = { usernameLogin }
+            onChange = {(e) => {setUsernameLogin(e.target.value);
             }
-        }
-
-        //onChange={e => setEmail(e.target.value)}
-        /> <
-        /FormGroup> <
-        FormGroup controlId = "password"
-        bsSize = "large" >
-        <
-        ControlLabel className = 'names' > < /ControlLabel> <
-        FormControl
-
-
-        onChange = {
-            (e) => {
-                setPasswordLogin(e.target.value);
-            }
-        }
-
-        {...Object.keys(passwordLoginErr).map((key) => {
-                return <div style = {
-                    { color: 'red ' } } > { passwordLoginErr[key] } < /div>
-            })
-        }
-
-
+        }/>
+        <FormGroup controlId = "password" bsSize = "large" >
+        <ControlLabel className = 'names' > </ControlLabel>
+        <FormControl
         type = "password"
         placeholder = 'Password'
         value = { passwordLogin }
+        onChange = {(e) => {setPasswordLogin(e.target.value);
+    }
+}
+/>
+        
+    </FormGroup>
+</FormGroup>
+        <Link to ='/dashboard'>
+            <Button onClick = { login } onSubmit = { onSubmit } block bsSize = "large" type = "submit"className = 'names' >Login </Button> 
+        </Link>
+        </form>
 
-        />
+    </div>
 
-        <
-        /FormGroup>
+    )
 
-        <
-        Link to = '/dashboard' >
-        <
-        Button onClick = { login }
-        onSubmit = { onSubmit }
-        block bsSize = "large"
-        type = "submit"
-        className = 'names' >
-        Login <
-        /Button> <
-        /Link>
-
-
-
-
-        <
-        /form>
-
-        { /*<AppWrapper status = {loginStatus}/>*/ }
-
-
-
-
-
-        <
-        /div>
-    );
 }

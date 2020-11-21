@@ -58,7 +58,7 @@ app.get('/dashboard', (request, response) => {
 
     db.query(
         'SELECT * FROM user', (err, result) => {
-            if (err) throw error;
+            if (err) throw err;
             else {
                 response.send(JSON.stringify(result))
             }

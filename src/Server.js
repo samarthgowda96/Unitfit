@@ -12,7 +12,7 @@ app.use(cors());
 const db = mysql.createConnection({
     user: 'root',
     host: 'localhost',
-    password: 'YOUR_DB_PASSWORD',
+    password: 'Mobile21!',
     database: 'unifit'
 });
 
@@ -70,6 +70,6 @@ app.get('/dashboard', (request, response) => {
 
 });
 
-app.listen(9016, () => {
+app.listen(9000, () => {
     console.log('running the server')
 })

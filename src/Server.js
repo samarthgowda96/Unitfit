@@ -12,7 +12,7 @@ app.use(cors());
 const db = mysql.createConnection({
     user: 'root',
     host: 'localhost',
-    password: 'Mobile21!',
+    password: 'YOUR_DB_PASSWORD',
     database: 'unifit'
 });
 
@@ -58,7 +58,7 @@ app.get('/dashboard', (request, response) => {
 
     db.query(
         'SELECT * FROM user', (err, result) => {
-            if (err) throw error;
+            if (err) throw err;
             else {
                 response.send(JSON.stringify(result))
             }

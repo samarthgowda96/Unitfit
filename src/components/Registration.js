@@ -81,7 +81,7 @@ function Registration() {
              
         } else {
             props.showError('Passwords do not match');
-        }
+        }sss
     }*/
 
     const [usernameRegistration, setUsernameRegistration]= useState('');
@@ -89,7 +89,7 @@ function Registration() {
     
 
     const register = () => {
-        Axios.post('http://localhost:9016/register', {
+        Axios.post('http://localhost:9000/register', {
             username: usernameRegistration,
             password: passwordRegistration
         }).then((response) => {

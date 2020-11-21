@@ -18,7 +18,7 @@ export default function Login() {
     const [usernameLoginErr, setUsernameLoginErr] = useState({});
     const [passwordLoginErr, setPasswordLoginErr] = useState({});
     const login = () => {
-        Axios.post('http://localhost:9016/login', {
+        Axios.post('http://localhost:9000/login', {
             username: usernameLogin,
             password: passwordLogin
         }).then((response) => {

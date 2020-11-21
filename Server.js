@@ -15,7 +15,7 @@ const db = mysql.createConnection({
     password: 'YOUR_DB_PASSWORD',
     database: 'unifit'
 });
-
+///
 app.post('/register', (request, response) => {
 
     const username = request.body.username;

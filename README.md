@@ -1,5 +1,16 @@
 UnitFit
 
+## Requirements
+
+Ensure you have the latest version of Node on your local machine. I recommend using Node Version Manager to install and manage multiple Node versions: NVM
+
+Also, you'll need Node Package Manager
+
+
+To run the client locally, run npm start. A server should start on 127.0.0.1:3000.
+To run the server locally, run node server. A server should start on 127.0.0.1:9000.
+
+To develop the server locally, you'll need a database called "unitfit" running locally. Install MySql. MySql will need to be running alongside the local server in order for Database calls to be made.
 ## Available Scripts
 
 In the project directory, you can run:

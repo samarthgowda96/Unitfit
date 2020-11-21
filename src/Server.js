@@ -12,7 +12,7 @@ app.use(cors());
 const db = mysql.createConnection({
     user: 'root',
     host: 'localhost',
-    password: 'Mobile21!',
+    password: 'YOUR_DB_PASSWORD',
     database: 'unifit'
 });
 

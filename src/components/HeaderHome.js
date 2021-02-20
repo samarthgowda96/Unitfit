@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {BrowserRouter as Router} from 'react-router-dom'
+
 import { Header, Segment,Button } from 'semantic-ui-react'
 import './HeaderHome.css'
 function HeaderHome() {

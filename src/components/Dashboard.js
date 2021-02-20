@@ -1,8 +1,7 @@
 import React,{Component} from 'react';
-import  { useState } from "react";
-import {BrowserRouter as Router} from 'react-dom'
+
 import Axios from 'axios'
-import {Button} from 'react-bootstrap'
+
 import App from './workout/App'
 import{Menu} from 'semantic-ui-react'
 
@@ -28,11 +27,11 @@ userData = () => {
 }
 render(){
        
-    {/*
+   /* {/*
         <Button onClick={userData}>
         getUsers {users.data}
     </Button>
-    */} 
+    } */
     const { color } = this.props
     const { activeItem } = this.state
 

@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import {Form,Button,Segment,Header,Divider} from 'semantic-ui-react'
-import{Input} from 'semantic-ui-react-form-validator'
+import {Form,Button,Segment,Header} from 'semantic-ui-react'
+
 import Axios from 'axios';
 import './login.css'
-import { Grid } from 'react-bootstrap';
+
 
 
 function Registration() {
@@ -89,7 +89,7 @@ function Registration() {
     
 
     const register = () => {
-        Axios.post('http://localhost:9000/register', {
+        Axios.post('http://localhost:3009/register', {
             username: usernameRegistration,
             password: passwordRegistration
         }).then((response) => {

@@ -12,7 +12,7 @@ app.use(cors());
 const db = mysql.createConnection({
     user: 'root',
     host: 'localhost',
-    password: 'YOUR_DB_PASSWORD',
+    password: 'Mobile21!',
     database: 'unifit'
 });
 
@@ -22,7 +22,7 @@ app.post('/register', (request, response) => {
     const password = request.body.password;
 
     db.query(
-        'INSERT INTO user (name, password) VALUES (?, ?)', [username, password], (err, result) => {
+        'INSERT INTO user (username, password) VALUES (?, ?)', [username, password], (err, result) => {
             console.log(err);
             console.log(result)
         }

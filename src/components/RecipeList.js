@@ -59,7 +59,7 @@ class RecipeList extends React.Component {
           this.state.recipe.map(
             (recipe)=>
               <div className="card" key={recipe.id}>
-                 <img src={' https://spoonacular.com/recipeImages/'+recipe.id+'-480x360'} />
+                 <img src={' https://spoonacular.com/recipeImages/'+recipe.id+'-480x360'}  alt={'sasa'}/>
                    <div className="container">
                       <h4>{recipe.title}</h4>
                       <Recipes recipeId={recipe.id}/>

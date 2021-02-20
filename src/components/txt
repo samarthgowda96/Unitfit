@@ -1,8 +1,0 @@
- React.useEffect(function effectFunction() {
-       fetch('https://the-fake-harry-potter-api.com/books')
-           .then(response => response.json())
-           .then(({ data: books }) => {
-               updateBooks(books);
-           });
-   }, []);
-   

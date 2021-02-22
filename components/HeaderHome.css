@@ -1,0 +1,12 @@
+.ui.header.HeaderHome {
+    font-weight: 600;
+    text-align: center;
+    font-family: 'Modak', cursive;
+    text-shadow: 100 black;
+}
+
+.ui.segment.HeaderSegment {
+    font-family: 'Modak', cursive;
+    font-weight: 300;
+    text-align: center;
+}

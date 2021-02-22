@@ -15,7 +15,7 @@ const AppWrapper = () =>{
       return( 
       <div>
       <Route path='/dashboard' component={Dashboard} />
-    </div>
+      </div>
       )
 
     

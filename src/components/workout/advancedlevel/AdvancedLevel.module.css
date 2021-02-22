@@ -1,0 +1,14 @@
+.Button{
+    padding: 30px 50px;
+    margin: 20px;
+    background-color: gray;
+    color: aliceblue;
+    border: 1px solid;
+    font-size: 20px;
+}
+.text {
+    margin: 5px 20px;
+    padding: 30px;
+    color: white;
+    font-size: 20px;
+}

@@ -5,10 +5,6 @@ const API = 'AIzaSyDgGCJ0-eCzj6u-p5wmK_q4oa6zuNeLoXA';
 const playlistID = 'PL5qo1Sl2GW3fdk6DMuLMc5UlTPwDXFCKn';
 const result = 10;
 const finalURL = `https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=${result}&playlistId=${playlistID}&key=${API}`;
-
-
-
-
 class Advanced extends Component{
     constructor(props){
         super(props);
@@ -17,8 +13,6 @@ class Advanced extends Component{
             toggle: false
         }
     }
-    
-    
     basicClickHandler=()=>{
         fetch(finalURL)
             .then((response)=>response.json())

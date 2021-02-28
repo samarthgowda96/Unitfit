@@ -1,7 +1,7 @@
 module.exports = {
     HOST: "localhost",
     USER: "root",
-    PASSWORD: "Mobile21!",
+    PASSWORD: "YourDBPassword",
     DB: "unifit"
   };
   

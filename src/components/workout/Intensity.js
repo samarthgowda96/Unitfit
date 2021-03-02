@@ -1,6 +1,6 @@
 import React from 'react';
-import BasicLevel from './basiclevel/BasicLevel';
-import AdvancedLevel from './advancedlevel/AdvancedLevel';
+import BasicLevel from './BasicLevel';
+import AdvancedLevel from './AdvancedLevel';
 
 const intensity=()=>{
 

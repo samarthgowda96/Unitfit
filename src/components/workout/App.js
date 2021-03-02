@@ -3,8 +3,7 @@ import SearchBar from './SearchBar';
 import Youtube from './YoutubeApi';
 import VideoList from './VideoList';
 import VideoDetail from './VideoDetail';
-import BasicLevel from './basiclevel/BasicLevel';
-import AdvancedLevel from './advancedlevel/AdvancedLevel';
+
 
 const KEY = 'AIzaSyDgGCJ0-eCzj6u-p5wmK_q4oa6zuNeLoXA';
 

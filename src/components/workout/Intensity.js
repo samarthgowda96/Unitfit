@@ -1,6 +1,6 @@
 import React from 'react';
-import BasicLevel from './BasicLevel';
-import AdvancedLevel from './AdvancedLevel';
+import Basic from './Basic';
+import Advanced from './Advanced';
 
 const intensity=()=>{
 
@@ -11,10 +11,10 @@ const intensity=()=>{
         <div class="ui grid">
         <div class="two column row">
         <div class="ui vertical divider">Select your Intensity level :)</div>
-        <div class="left floated column"><BasicLevel  /></div>
+        <div class="left floated column"><Basic /></div>
         
         
-        <div class="right floated column"><AdvancedLevel /></div>
+        <div class="right floated column"><Advanced /></div>
        
         </div>
  

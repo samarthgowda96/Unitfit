@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
-
+import {Link} from 'react-router-dom';
 import Axios from 'axios'
+import {button} from 'semantic-ui-react'
 
 import App from './workout/App'
 import{Menu} from 'semantic-ui-react'
@@ -9,13 +10,22 @@ const colors=[
    
     'grey'
 ]
-
+const buttoncolor={
+  fontfamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+    padding:"30px 50px",
+    margin: "20px",
+    backgroundColor: "gray",
+    color: "aliceblue",
+    border: "5px outset #FF4136",
+    fontsize: "20px"
+}
 
 class Menuu extends Component{
   
     state = { activeItem: 'home' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+ 
 
 
 userData = () => {
@@ -37,12 +47,13 @@ render(){
 
     return (
         <div>
+          
       <Menu color={color} inverted widths={3}>
+        
         <Menu.Item
           name='My Workout'
-          active={activeItem === 'home'}
-          onClick={this.handleItemClick}
-        />
+          active={activeItem === 'home'}/>
+       
         <Menu.Item
           name='My Recipes'
           active={activeItem === 'messages'}
@@ -54,17 +65,11 @@ render(){
           onClick={this.handleItemClick}
         />
       </Menu>
-    )
-  
-
+      <Link to='/Intensity'>
+          <button style={buttoncolor}>Browse Workout by Intensity</button></Link>
     
-   
         <App />
-
-
-            
-           
-        </div>
+      </div>
     ) 
 }
 }

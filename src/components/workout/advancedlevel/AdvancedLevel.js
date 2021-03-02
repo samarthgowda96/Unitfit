@@ -13,7 +13,8 @@ class Advanced extends Component{
             toggle: false
         }
     }
-    basicClickHandler=()=>{
+    basicClickHandler=(e)=>{
+        
         fetch(finalURL)
             .then((response)=>response.json())
             .then((responseJson)=>{

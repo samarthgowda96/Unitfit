@@ -39,18 +39,7 @@ onVideoSelect=(video)=>{
     return (
       <div className="ui container">
       
-        <div class="ui grid">
-        <div class="two column row">
-        <div class="ui vertical divider">Select your Intensity level :)</div>
-        <div class="left floated column"><BasicLevel/></div>
-        
-        
-        <div class="right floated column"><AdvancedLevel/></div>
-       
-        </div>
- 
-        
-        </div>
+    
         <SearchBar onFormSubmit={this.onTermSubmit} />
         <div className='ui grid'>
           <div className='ui row'>

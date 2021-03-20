@@ -13,6 +13,7 @@ import Dashboard from './components/Dashboard';
 import AppWrapper from './components/AppWrapper'
 import {LoginProvider} from './context/LoginContext'
 import HeaderHome from './components/HeaderHome';
+import index from './components/caloriecounter/index'
 
 function App() {
   return (

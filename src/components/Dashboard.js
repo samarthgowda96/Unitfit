@@ -1,12 +1,7 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 import Axios from 'axios'
-<<<<<<< HEAD
 import { NavLink, withRouter } from 'react-router-dom'
-=======
-import {button} from 'semantic-ui-react'
-
->>>>>>> 48253e3f5e412e1f178d0d3db598f2679db8ed19
 import App from './workout/App'
 import{Menu} from 'semantic-ui-react'
 

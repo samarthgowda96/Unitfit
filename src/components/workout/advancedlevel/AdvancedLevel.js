@@ -39,7 +39,8 @@ class Advanced extends Component{
 
                 return  {toggle: !prevState.toggle};
           
-          })
+            })
+            
     }
     render() {
         // console.log(finalURL)
@@ -52,7 +53,7 @@ class Advanced extends Component{
                 this.state.resultYT.map((data)=>{
                     var frame = <div  key={data.id}>
                         <p className={classes.text}>{data.title}</p>
-                        <iframe className={classes.list} key={data.id} width="560" height="315" src={data.url} allowFullScreen></iframe> 
+                        <iframe className={classes.list} key={data.id} width="460" height="215" src={data.url} allowFullScreen></iframe> 
                     </div>
                     return frame;
                 })

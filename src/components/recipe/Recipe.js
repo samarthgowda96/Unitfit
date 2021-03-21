@@ -4,12 +4,13 @@ import RecipeCard from './RecipeCard';
 import classes from './RecipeCard.module.css';
 import Calculate from '../caloriecounter/App';
 import Ads from '../Advertise/App';
-
+import Spinner from '../Spinner/Spinner';
 
 class Recipe extends Component {
     state = {
         recipe: [],
-        error: false
+        error: false,
+        spin: false
     }
 
     componentDidMount() {
@@ -29,12 +30,24 @@ class Recipe extends Component {
                 console.log('kq', fetchData)
                 console.log('kq3', this.state.recipe)
             }).catch(error => {
-                this.setState({ error: true })
+                this.setState({ setState: true, spin: true})   
             });
 
     }
     render() {
-
+        let fetchedData = (
+            this.state.recipe.map(recipe => (
+                <RecipeCard
+                    key={recipe.key}
+                    name={recipe.value}
+                    img={recipe.name}
+                />
+            ))
+        )
+        
+        if(this.state.spin){
+            fetchedData = <p><p style={{color:'red'}}>Error... The requested resource was not found.</p> <Spinner/></p> 
+        }
 
         return (
             <div>
@@ -54,13 +67,7 @@ class Recipe extends Component {
                         {/* <div class="ui vertical divider">Select your Intensity level :)</div> */}
                         <div class="left col-1 floated column "></div>
                         <div class="left col-7 floated column ">
-                            {this.state.recipe.map(recipe => (
-                                <RecipeCard
-                                    key={recipe.key}
-                                    name={recipe.value}
-                                    img={recipe.name}
-                                />
-                            ))}
+                            {fetchedData}
                         </div>
                         <div class="right col-4 floated column"><Ads/></div>
 

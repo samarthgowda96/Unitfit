@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 
 import Axios from 'axios'
-
+import { NavLink, withRouter } from 'react-router-dom'
 import App from './workout/App'
 import{Menu} from 'semantic-ui-react'
 
@@ -45,6 +45,8 @@ render(){
         />
         <Menu.Item
           name='My Recipes'
+          as={NavLink} 
+          to="recipe"
           active={activeItem === 'messages'}
           onClick={this.handleItemClick}
         />

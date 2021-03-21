@@ -10,7 +10,7 @@ import {BrowserRouter as Router ,Route} from 'react-router-dom'
 import AppWrapper from './components/AppWrapper'
 import {LoginProvider} from './context/LoginContext'
 import HeaderHome from './components/HeaderHome';
-
+import Recipe from './components/recipe/Recipe';
 function App() {
   return (
     <> 
@@ -29,7 +29,7 @@ function App() {
    
      <Route exact path="/register" component={Registration}/>
      <Route path="/dashboard" component={AppWrapper}/>
-     
+     <Route path="/recipe" component={Recipe} />
    
     
      

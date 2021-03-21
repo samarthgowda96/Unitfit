@@ -8,6 +8,10 @@
 }
 .Img{
     height: 20px;
+   
+}
+.Frame{
+    margin-left: 20px;
 }
 .Subject{
     color: rgb(79, 216, 170);

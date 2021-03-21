@@ -13,7 +13,8 @@ import Dashboard from './components/Dashboard';
 import AppWrapper from './components/AppWrapper'
 import { LoginProvider } from './context/LoginContext'
 import HeaderHome from './components/HeaderHome';
-import Recipe from './components/'
+import Recipe from './components/';
+
 function App() {
   return (
     <>

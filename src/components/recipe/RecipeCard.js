@@ -7,7 +7,7 @@ const recipeCard = (props) => {
     return (
 
         <div className={classes.Item}>
-            <Item.Group divided>
+            <Item.Group divided className={classes.Frame}>
                 <Item >
                     <Item.Image className={classes.Img} size='tiny' src={props.img} />
                     <Item.Content  verticalAlign='middle'> {props.name}</Item.Content>

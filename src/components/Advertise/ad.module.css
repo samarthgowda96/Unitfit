@@ -1,0 +1,11 @@
+.Img{
+    width: 100px;
+    margin: 20px 30px;
+}
+.Name{
+    color: aliceblue;
+}
+.Frame{
+    border: 0.1px dashed rgb(112, 110, 110);
+    margin: 25px 40px;
+}

@@ -13,7 +13,12 @@ import Dashboard from './components/Dashboard';
 import AppWrapper from './components/AppWrapper'
 import { LoginProvider } from './context/LoginContext'
 import HeaderHome from './components/HeaderHome';
+<<<<<<< HEAD
 import Recipe from './components/'
+=======
+import index from './components/caloriecounter/index'
+
+>>>>>>> 48253e3f5e412e1f178d0d3db598f2679db8ed19
 function App() {
   return (
     <>

@@ -1,0 +1,8 @@
+POST http://localhost:3009/register
+
+Content-Type: :application/json
+
+{
+    "username":"sam",
+    "password":"yourareastud"
+}

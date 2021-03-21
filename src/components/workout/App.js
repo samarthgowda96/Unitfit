@@ -3,8 +3,7 @@ import SearchBar from './SearchBar';
 import Youtube from './YoutubeApi';
 import VideoList from './VideoList';
 import VideoDetail from './VideoDetail';
-import BasicLevel from './basiclevel/BasicLevel';
-import AdvancedLevel from './advancedlevel/AdvancedLevel';
+
 
 const KEY = 'AIzaSyDgGCJ0-eCzj6u-p5wmK_q4oa6zuNeLoXA';
 
@@ -39,18 +38,7 @@ onVideoSelect=(video)=>{
     return (
       <div className="ui container">
       
-        <div class="ui grid">
-        <div class="two column row">
-        <div class="ui vertical divider">Select your Intensity level :)</div>
-        <div class="left floated column"><BasicLevel/></div>
-        
-        
-        <div class="right floated column"><AdvancedLevel/></div>
-       
-        </div>
- 
-        
-        </div>
+    
         <SearchBar onFormSubmit={this.onTermSubmit} />
         <div className='ui grid'>
           <div className='ui row'>

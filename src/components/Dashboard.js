@@ -47,7 +47,7 @@ render(){
     return (
         <div>
           
-      <Menu color={color} inverted widths={3}>
+      <Menu style={{border:'2px solid red', display: 'flex', justifyContent: 'center', padding:'3px'}} color={color} inverted widths={3}>
         
         <Menu.Item
           name='My Workout'

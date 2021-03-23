@@ -5,6 +5,8 @@ import classes from './RecipeCard.module.css';
 import Calculate from '../caloriecounter/App';
 import Ads from '../Advertise/App';
 import Spinner from '../Spinner/Spinner';
+import {Button} from 'semantic-ui-react'
+import {Link} from 'react-router-dom'
 
 class Recipe extends Component {
     state = {
@@ -51,6 +53,8 @@ class Recipe extends Component {
 
         return (
             <div>
+                <Link to="/recipe/ourmenu">
+                <Button style={{ marginLeft: "5px",border: '1px solid red'}} className="left floated column" >Our Menu</Button></Link>
                 <Calculate />
                 <h2 className={classes.Subject}>Calories Contents of Daily Food</h2>
                 <p className={classes.Intro}>Research have shown that people must be absorbed an adequate amount of Calories

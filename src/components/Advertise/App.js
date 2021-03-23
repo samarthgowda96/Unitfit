@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import data from './data';
-import List from './List';
+import List from './List';  
+import {Button} from 'semantic-ui-react'
 function App() {
   const [ads, setAds]=useState(data)
   return (
@@ -9,7 +10,7 @@ function App() {
       <section className='container'>
         <h3 style={{color:'white'}}>{ads.length} Ads</h3>
         <List ads={ads}/>
-        <button onClick={()=>setAds([])}>Stop showing Ads</button>
+        <Button onClick={()=>setAds([])}>Stop showing Ads</Button>
 
       </section>
     </main>

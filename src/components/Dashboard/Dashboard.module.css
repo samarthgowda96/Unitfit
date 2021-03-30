@@ -1,0 +1,112 @@
+.Input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.Label {
+    font-weight: bold;
+    display: inline-block;
+    margin: 10px 20px ;
+    color: white;
+    float: left;
+    margin-left: 70px;
+}
+
+.InputElement {
+    outline: none;
+    border: 1px solid #ccc;
+    background-color:rgb(172, 166, 166);
+    font: inherit;
+    padding: 6px 10px;
+    /* display: block; */
+    width: 30%;
+    box-sizing: border-box;
+    float: right;
+    margin-right: 100px;
+}
+
+.InputElement:focus{
+    outline: none;
+    background-color: rgb(223, 221, 221);
+}
+
+.Invalid{
+    border: 1px solid red;
+    background-color: rgb(241, 194, 189);
+}
+
+.Button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: #e7e7e7; 
+    color: black;
+    width: 30%;
+    margin: 20px 15px;
+  }
+
+  .Grid {
+      display: grid;
+      grid-template-columns: 50% 50%;
+      grid-gap: 15px;
+  }
+
+  .Form {
+      background-color: black;
+      margin: 20px 70px;
+      padding: 20px 10px;
+      border: 1px solid #ccc;
+      border-radius:30px 30px 30px 30px;
+      color: white;
+  }
+  @media screen and (max-width:800px){
+    .Grid {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-gap: 15px;
+    }
+    .Label{
+        font-weight: bold;
+        display: block;
+        margin-left: 0px;
+    }
+    
+    .InputElement{
+        font: inherit;
+        padding: 6px 10px;
+        /* display: block; */
+        width: 100%;
+        margin-right: 0px;
+    }
+  }
+
+.Table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+.Row {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+.Col:nth-child(even) {
+    background-color: white;
+  }  
+  .Col:nth-child(odd) {
+    background-color: black;
+    color: white;
+  }  
+  
+  
+  

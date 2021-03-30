@@ -47,7 +47,7 @@ render(){
     return (
         <div>
           
-      <Menu color={color} inverted widths={3}>
+      <Menu color={color} inverted widths={4}>
         
         <Menu.Item
           name='My Workout'
@@ -57,6 +57,13 @@ render(){
           name='My Recipes'
           as={NavLink} 
           to="recipe"
+          active={activeItem === 'messages'}
+          onClick={this.handleItemClick}
+        />
+        <Menu.Item
+          name='My Dashboard'
+          as={NavLink} 
+          to="myDashboard"
           active={activeItem === 'messages'}
           onClick={this.handleItemClick}
         />

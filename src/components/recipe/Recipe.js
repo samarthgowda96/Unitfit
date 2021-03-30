@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import RecipeCard from './RecipeCard';
 import classes from './RecipeCard.module.css';
-import Calculate from '../caloriecounter/App';
+import Calculate from '../Caloriecounter/App';
 import Ads from '../Advertise/App';
 import Spinner from '../Spinner/Spinner';
 
@@ -10,7 +10,8 @@ class Recipe extends Component {
     state = {
         recipe: [],
         error: false,
-        spin: false
+        spin: false,
+        loading: false
     }
 
     componentDidMount() {
@@ -26,7 +27,7 @@ class Recipe extends Component {
                         key: key
                     });
                 }
-                this.setState({ recipe: fetchData })
+                this.setState({ recipe: fetchData, loading: true })
                 console.log('kq', fetchData)
                 console.log('kq3', this.state.recipe)
             }).catch(error => {
@@ -47,6 +48,9 @@ class Recipe extends Component {
         
         if(this.state.spin){
             fetchedData = <p><p style={{color:'red'}}>Error... The requested resource was not found.</p> <Spinner/></p> 
+        }
+        if(this.state.recipe === []){
+            fetchedData = <Spinner/>
         }
 
         return (

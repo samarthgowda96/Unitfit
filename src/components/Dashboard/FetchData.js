@@ -59,7 +59,7 @@ class FetchData extends Component {
             <div>
                 <h2 style={{color: 'white'}}>Your Record</h2>
                 <div className={classes.Form}>
-                    <h3>Your current BMI we estimates: {this.props.BMI}</h3>
+                    <h3>Your current BMI we estimate: {this.props.BMI}</h3>
                     {result}
                 </div>
                

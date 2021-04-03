@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import RecipeCard from './RecipeCard';
 import classes from './RecipeCard.module.css';
-import Calculate from '../Caloriecounter/App';
+//import Calculate from '../Caloriecounter/App';
+import Calculate from '../caloriecounter/App'
 import Ads from '../Advertise/App';
 import Spinner from '../Spinner/Spinner';
 import {Button} from 'semantic-ui-react'

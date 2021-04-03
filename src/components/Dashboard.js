@@ -47,10 +47,12 @@ render(){
     return (
         <div>
           
-      <Menu color={color} inverted widths={4}>
+      <Menu style={{border:'2px solid red', display: 'flex', justifyContent: 'center', padding:'2px'}}style={{border:'2px solid red', display: 'flex', justifyContent: 'center', padding:'3px'}} color={color} inverted widths={4} >
         
         <Menu.Item
           name='My Workout'
+          as={NavLink}
+          to="DashBoard"
           active={activeItem === 'home'}/>
        
         <Menu.Item

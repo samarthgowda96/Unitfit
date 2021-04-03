@@ -10,9 +10,12 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import AppWrapper from './components/AppWrapper'
 import { LoginProvider } from './context/LoginContext'
 import HeaderHome from './components/HeaderHome';
-import Recipe from './components/Recipe/Recipe';
-import CalCounter from './components/Caloriecounter/App';
+//import Recipe from './components/Recipe/Recipe';
+import Recipe from './components/recipe/Recipe'
+//import CalCounter from './components/Caloriecounter/App';
 import Dashboard from './components/Dashboard/Dashboard';
+import index from './components/recipe2/src/index'
+import Intensity from './components/workout/Intensity'
 function App() {
   return (
     <>
@@ -22,9 +25,11 @@ function App() {
             <Route exact path='/login' component={HeaderHome} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Registration} />
-            <Route path="/dashboard" component={AppWrapper} />
-            <Route path="/recipe" component={Recipe} />
-            <Route path="/myDashboard" component={Dashboard} />
+            <Route exact path="/dashboard" component={AppWrapper} />
+            <Route exact path="/recipe" component={Recipe} />
+            <Route exact path="/myDashboard" component={Dashboard} />
+            <Route exact path='/intensity' component={Intensity} />
+            <Route exact path='/recipe/ourmenu' component={index} />
           </Router>
         </div>
       </LoginProvider>

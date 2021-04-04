@@ -5,9 +5,11 @@ import classes from './Dashboard.module.css';
 import Spinner from '../Spinner/Spinner'
 import Record from './FetchData';
 import axios from 'axios';
-
+import MyProfile from '../Freemium/MyProfile';
 class Dashboard extends Component{
     state = {
+        successMess: false,
+        formIsValid: false,
         BMI : 0,
         loading:false,
         dataForm:{
@@ -18,7 +20,12 @@ class Dashboard extends Component{
                     type: 'text',
                     placeholder: 'Date'
                 },
-                value: ''
+                value: '',
+                validation:{
+                    required: true
+                },
+                valid: false,
+                touch: false
             },
             gender:{
                 label: '2. Gender',
@@ -30,7 +37,11 @@ class Dashboard extends Component{
                         {value: 'other', displayValue: 'Other'},
                     ]
                 },
-                value: 'Male'
+                validation:{
+                    required: true
+                },
+                value: 'Male',
+                valid: true, //add valid = true for validating the whole form
             },
             caloricIntake:{
                 label: '3. Caloric Intake (cal)',
@@ -39,7 +50,12 @@ class Dashboard extends Component{
                     type: 'number',
                     placeholder: 'Cal Intake'
                 },
-                value: ''
+                value: '',
+                validation:{
+                    required: true
+                },
+                valid: false,
+                touch: false
             },
             weight:{
                 label: '4. Weight (lb)',
@@ -48,7 +64,12 @@ class Dashboard extends Component{
                     type: 'number',
                     placeholder: 'Your weight'
                 },
-                value: ''
+                value: '',
+                validation:{
+                    required: true
+                },
+                valid: false,
+                touch: false
             },
             height:{
                 label: '5. Height (cm)',
@@ -57,7 +78,12 @@ class Dashboard extends Component{
                     type: 'number',
                     placeholder: 'Your height'
                 },
-                value: ''
+                value: '',
+                validation:{
+                    required: true
+                },
+                valid: false,
+                touch: false
             },
             waist:{
                 label: '6. Waist (cm)',
@@ -66,7 +92,12 @@ class Dashboard extends Component{
                     type: 'number',
                     placeholder: 'Your waist'
                 },
-                value: ''
+                value: '',
+                validation:{
+                    required: true
+                },
+                valid: false,
+                touch: false
             },
             neck:{
                 label: '7. Neck (cm)',
@@ -75,7 +106,12 @@ class Dashboard extends Component{
                     type: 'number',
                     placeholder: 'Your neck'
                 },
-                value: ''
+                value: '',
+                validation:{
+                    required: true
+                },
+                valid: false,
+                touch: false
             },
             hip:{
                 label: '8. Hip (cm)',
@@ -84,7 +120,12 @@ class Dashboard extends Component{
                     type: 'number',
                     placeholder: 'Your hip'
                 },
-                value: ''
+                value: '',
+                validation:{
+                    required: true
+                },
+                valid: false,
+                touch: false
             },
             chest:{
                 label: '9. Chest (cm)',
@@ -93,7 +134,12 @@ class Dashboard extends Component{
                     type: 'number',
                     placeholder: 'Your chest'
                 },
-                value: ''
+                value: '',
+                validation:{
+                    required: true
+                },
+                valid: false,
+                touch: false
             },
             leftUpperArm:{
                 label: '10. Left Upper Arm (cm)',
@@ -102,7 +148,12 @@ class Dashboard extends Component{
                     type: 'number',
                     placeholder: 'Your left upper arm'
                 },
-                value: ''
+                value: '',
+                validation:{
+                    required: true
+                },
+                valid: false,
+                touch: false
             },
             rightUpperArm:{
                 label: '11. Right Upper Arm (cm)',
@@ -111,7 +162,12 @@ class Dashboard extends Component{
                     type: 'number',
                     placeholder: 'Your right upper arm'
                 },
-                value: ''
+                value: '',
+                validation:{
+                    required: true
+                },
+                valid: false,
+                touch: false
             },
             leftThigh:{
                 label: '12. Left Thigh (cm)',
@@ -120,7 +176,12 @@ class Dashboard extends Component{
                     type: 'number',
                     placeholder: 'Your left thigh'
                 },
-                value: ''
+                value: '',
+                validation:{
+                    required: true
+                },
+                valid: false,
+                touch: false
             },
             rightThigh:{
                 label: '13. Right Thigh (cm)',
@@ -129,10 +190,15 @@ class Dashboard extends Component{
                     type: 'number',
                     placeholder: 'Your right thigh'
                 },
-                value: ''
+                value: '',
+                validation:{
+                    required: true
+                },
+                valid: false,
+                touch: false
             },
             note:{
-                label: '13. Note',
+                label: '13. Note (5-100 words)',
                 elementType: 'textarea',
                 elementConfig: {
                     placeholder: 'Write here...',
@@ -140,6 +206,14 @@ class Dashboard extends Component{
                     cols: '50'
                 },
                 value: '',
+                validation:{
+                    required: true,
+                    minLength: 5,
+                    maxLength: 100
+                },
+                valid: false,
+                touch: false
+
             },
         }
     }
@@ -151,12 +225,20 @@ class Dashboard extends Component{
             ...updatedDataForm[inputIdentifier]
         }
         updatedDataElement.value = event.target.value;
+        updatedDataElement.valid = this.checkValidity(updatedDataElement.value, updatedDataElement.validation);
+        updatedDataElement.touch = true;
         updatedDataForm[inputIdentifier] = updatedDataElement;
-        this.setState({dataForm : updatedDataForm});
+        
+        let formIsValid = true;
+        for(let InputIdentifier in updatedDataForm){
+            formIsValid = updatedDataForm[InputIdentifier].valid && formIsValid;
+        }
+
+        this.setState({dataForm : updatedDataForm, formIsValid: formIsValid});
     }
     submitHandler = (event) =>{
         event.preventDefault();
-        this.setState({ loading: true });
+        this.setState({ loading: true, successMess: true });
         const dataFromDashBoard = {};
         for(let FormElementIdentifier in this.state.dataForm){
             dataFromDashBoard[FormElementIdentifier] = this.state.dataForm[FormElementIdentifier].value
@@ -168,7 +250,7 @@ class Dashboard extends Component{
             .then(response => {
                 this.setState({ loading: false });
             })
-            .catch(error => this.setState({ loading: false }));
+            .catch(error => this.setState({ loading: true }));
         this.calculateBMI();
     }
     calculateBMI(){
@@ -179,8 +261,26 @@ class Dashboard extends Component{
         calBMI = Math.floor(703*weightBMI/((heightBMI/2.54)*(heightBMI/2.54))); 
         this.setState({BMI: calBMI});
     }
+    checkValidity(value, rules){
+        let isValid = true;
+
+        if(rules.required){
+            isValid = value.trim(' ') != '' && isValid ;
+        }
+        if(rules.minLength){
+            isValid = value.length >=rules.minLength && isValid; 
+        }
+        if(rules.maxLength){
+            isValid = value.length <= rules.maxLength && isValid; 
+        }
+        return isValid
+    }
    
     render(){
+        let successMess = null;
+        if(this.state.successMess){
+            successMess = <p className={classes.SuccessMess}>Saved Successfully!</p>
+        }
         const formElementArray=[];
         for(let key in this.state.dataForm){
             formElementArray.push({
@@ -198,19 +298,25 @@ class Dashboard extends Component{
                         elementType = {formElement.config.elementType} 
                         elementConfig = {formElement.config.elementConfig}
                         value = {formElement.config.value}
-                        changed = {(event)=>this.inputChangeHandler(event,formElement.id)}/>
+                        changed = {(event)=>this.inputChangeHandler(event,formElement.id)}
+                        invalid = {!formElement.config.valid}
+                        touch = {formElement.config.touch}
+                        shouldValidate = {formElement.config.validation}/>
                 ))}
                 </div>
                 
-                <button className={classes.Button}>SAVE</button>
+                <button className={classes.Button} disabled={!this.state.formIsValid}>SAVE</button>
+                {successMess}
             </form>
         )
         if (this.state.loading) {
-            form = <Spinner />
+            form =<p> <Spinner /> 
+            <h4 className={classes.SuccessMess}>Loading...</h4></p> 
         }
         
         return(
             <div>
+                <MyProfile/>
                 <h2 style={{color:'white', margin: '20px 30px'}}>Enter your Body Index to the Dashboard:</h2>
                 {form}
                 <Record BMI = {this.state.BMI}/>

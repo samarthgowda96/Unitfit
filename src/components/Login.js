@@ -17,6 +17,8 @@ export default function Login() {
     const [passwordLogin, setPasswordLogin] = useState('');
     const [usernameLoginErr, setUsernameLoginErr] = useState({});
     const [passwordLoginErr, setPasswordLoginErr] = useState({});
+    const [errors,setErrors]=useState({})
+    const [input,setInput]=useState({})
     const login = () => {
         Axios.post('http://localhost:3009/login', {
             username: usernameLogin,
@@ -37,10 +39,42 @@ export default function Login() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        const isValid = formValidation();
-    }
+        //const isValid = formValidation();
 
-    const formValidation = () => {
+        if(validate()){
+            let input = {input};
+            input["email"] = "";
+            input["password"] = "";
+            setInput(input);
+        }
+    }
+    const validate=()=>{
+    
+        let errors={};
+        let isValid= true;
+        
+      
+          if (!input["email"]) {
+            isValid = false;
+            errors["email"] = "Please enter your valid email Address.";
+          }
+      
+          if (typeof input["email"] !== "undefined") {
+              
+            var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+            if (!pattern.test(input["email"])) {
+              isValid = false;
+              errors["email"] = "Please enter valid email address.";
+            }
+          }
+          setErrors(errors)
+
+          return isValid
+
+        }
+    
+
+    /* const formValidation = () => {
         const usernameLoginErr = {};
         const passwordLoginErr = {};
         let isValid = true;
@@ -58,9 +92,9 @@ export default function Login() {
         }
         setUsernameLoginErr(usernameLoginErr)
         setPasswordLoginErr(passwordLoginErr)
-        return isValid
+        return isValid */
 
-    }
+    
 
 
 
@@ -69,7 +103,7 @@ export default function Login() {
     return (
         <div className = "Login" >
             <h2 className = 'titlelogin' > Sign In </h2>
-            <form>
+            <form onSubmit={onSubmit}> 
             <FormGroup controlId = "email" bsSize = "large" >
             <ControlLabel className = 'names' > </ControlLabel>
             <FormControl
@@ -77,9 +111,8 @@ export default function Login() {
             autoFocus type = "email"
             placeholder = "Email"
             value = { usernameLogin }
-            onChange = {(e) => {setUsernameLogin(e.target.value);
-            }
-        }/>
+            onChange = {(e) => {setUsernameLogin(e.target.value)}}/>
+            <div className ="text-danger">{errors.email}</div>
         <FormGroup controlId = "password" bsSize = "large" >
         <ControlLabel className = 'names' > </ControlLabel>
         <FormControl
@@ -93,9 +126,11 @@ export default function Login() {
         
         </FormGroup>
         </FormGroup>
-        <Link to ='/dashboard'>
+        <input type="submit"  block bsSize = "large" value="login" class="btn btn-success"/>
+        {/* <Button type="submit" block bsSize = "large" >Login</Button> */}
+         {/* <Link /* to ='/dashboard'  >
             <Button onClick = { login } onSubmit = { onSubmit } block bsSize = "large" type = "submit"className = 'names' >Login </Button> 
-        </Link>
+        </Link>  */}
         </form>
 
     </div>

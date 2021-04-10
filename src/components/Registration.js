@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {Form,Button,Segment,Header} from 'semantic-ui-react'
 
-import Axios from 'axios';
+import axios from 'axios';
 import './login.css'
 
 
@@ -86,14 +86,18 @@ function Registration() {
 
     const [usernameRegistration, setUsernameRegistration]= useState('');
     const [passwordRegistration, setPasswordRegistration]= useState('');
+    const [userMongoID, setUserMongoID]= useState('');
     
 
     const register = () => {
-        Axios.post('http://localhost:3009/register', {
-            username: usernameRegistration,
+        axios.post('http://localhost:3005/users/register', {
+            email: usernameRegistration,
             password: passwordRegistration
         }).then((response) => {
-            console.log(response);
+            console.log(response.data._id);
+            const id = response.data._id
+            setUserMongoID(id)
+            
         })
     }
     
@@ -137,9 +141,9 @@ function Registration() {
     }}
     />
    
-    <Link to='/DashBoard'>
+   {/*  <Link to='/DashBoard'> */}
     <Button type='submit' onClick={register}>Submit</Button>
-    </Link>
+    {/* </Link> */}
     </div>
     </Segment>
     </div>

@@ -3,7 +3,7 @@ import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 
 import './login.css'
-import Axios from 'axios'
+import axios from 'axios'
 
 import { LoginContext } from '../context/LoginContext'
 import { useContext } from "react";
@@ -17,9 +17,9 @@ export default function Login() {
     const [passwordLogin, setPasswordLogin] = useState('');
     const [usernameLoginErr, setUsernameLoginErr] = useState({});
     const [passwordLoginErr, setPasswordLoginErr] = useState({});
-    const [errors,setErrors]=useState({})
+    const [errors,setErrors]=useState('')
     const [input,setInput]=useState({})
-    const login = () => {
+    /* const login = () => {
         Axios.post('http://localhost:3009/login', {
             username: usernameLogin,
             password: passwordLogin
@@ -36,7 +36,25 @@ export default function Login() {
             }
         })
     }
+ */
 
+ const login=() => {
+     axios.post('http://localhost:3005/users/login',{
+         email: usernameLogin,
+         password: passwordLogin
+     }).then((response) =>{
+         console.log(response)
+        
+         if(response.data.message){
+             const error= response.data.message;
+             setErrors(error)
+             alert("Your Email or Password is Invalid")
+             setLoginStatus(false)
+         }
+         setLoginStatus(true)
+
+     })
+ }
     const onSubmit = (e) => {
         e.preventDefault();
         //const isValid = formValidation();
@@ -126,11 +144,13 @@ export default function Login() {
         
         </FormGroup>
         </FormGroup>
-        <input type="submit"  block bsSize = "large" value="login" class="btn btn-success"/>
+        <input  onClick = { login } onSubmit = { onSubmit }type="submit"  block bsSize = "large" value="login" class="btn btn-success"/>
         {/* <Button type="submit" block bsSize = "large" >Login</Button> */}
          {/* <Link /* to ='/dashboard'  >
             <Button onClick = { login } onSubmit = { onSubmit } block bsSize = "large" type = "submit"className = 'names' >Login </Button> 
         </Link>  */}
+         {/* <Button onClick = { login } onSubmit = { onSubmit } block bsSize = "large" type = "submit"className = 'names' >Login </Button> */} 
+         {errors}
         </form>
 
     </div>

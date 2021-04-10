@@ -63,7 +63,7 @@ render(){
           onClick={this.handleItemClick}
         />
         <Menu.Item
-          name='My Dashboard'
+          name='My Statistics'
           as={NavLink} 
           to="myDashboard"
           active={activeItem === 'messages'}

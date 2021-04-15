@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { Link } from 'react-router-dom';
-import UserStore from '../../stores/UserStore'
+//import UserStore from '../../stores/UserStore'
 
 import './login.css'
 import axios from 'axios'
@@ -40,7 +40,7 @@ export default function Login() {
         })
     }
  */
-useEffect( async ()  => {
+/* useEffect( async ()  => {
     try{
         let res = await axios.post('http://localhost:3005/users/IsloggedIn')
         let result = await res.json()
@@ -61,8 +61,8 @@ useEffect( async ()  => {
     }
 
 },[])
-
-const dologout= async() => {
+ */
+/* const dologout= async() => {
     try{
         let res = await axios.post('http://localhost:3005/users/logout')
         let result = await res.json()
@@ -81,7 +81,7 @@ const dologout= async() => {
 
     }
 }
-
+ */
 
 
  const login=() => {

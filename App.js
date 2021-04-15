@@ -11,14 +11,15 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Data from './components/Data'
 import Dashboard from './components/Dashboard';
 import AppWrapper from './components/AppWrapper'
-import { LoginProvider } from './context/LoginContext'
+import {LoginContext}  from './context/LoginContext'
 import HeaderHome from './components/HeaderHome';
 import Recipe from './components/';
 
 function App() {
+  const [showProfile, setShowProfile]= useState(false)
   return (
     <>
-      <LoginProvider>
+      <LoginContext.Provider value={}>
 
         <div className="App">
 
@@ -37,7 +38,7 @@ function App() {
           </Router>
 
         </div>
-      </LoginProvider>
+      </LoginContext.Provider>
     </>
 
   );

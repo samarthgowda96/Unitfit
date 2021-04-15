@@ -17,7 +17,7 @@ export default function Login() {
     const [loginStatus,setLoginStatus]=useState(false)
     const [usernameLogin, setUsernameLogin] = useState('');
     const [passwordLogin, setPasswordLogin] = useState('');
-    const [usernameLoginErr, setUsernameLoginErr] = useState({});
+    const [usernameLoginErr, setUsernameLoginErr] = useState('');
     const [passwordLoginErr, setPasswordLoginErr] = useState({});
     const [errors,setErrors]=useState({})
     
@@ -40,28 +40,15 @@ export default function Login() {
         })
     }
  */
-/* useEffect( async ()  => {
-    try{
-        let res = await axios.post('http://localhost:3005/users/IsloggedIn')
-        let result = await res.json()
-        if(result&& result.success){
-            UserStore.loading=false;
-            UserStore.isLoggedIn=true
-            UserStore.email=result.email
-        }
-        else{
-            UserStore.loading= false 
-            UserStore.isLoggedIn=false
-        }
-    }
-    catch(e){
-        UserStore.loading=false;
-        UserStore.isLoggedIn=false;
+/* const setLogin;
 
-    }
+ useEffect( async ()  => {
+     setLogin=<h1>{usernameLoginErr}</h1>
 
-},[])
- */
+    
+
+},usernameLoginErr) */
+
 /* const dologout= async() => {
     try{
         let res = await axios.post('http://localhost:3005/users/logout')
@@ -90,6 +77,7 @@ export default function Login() {
          password: passwordLogin
      }).then((response) =>{
          console.log(response.data)
+         setUsernameLoginErr(response.data._id)
         
          if(response.data==='Invalid creds'){
              const error= response.data;
@@ -196,8 +184,11 @@ export default function Login() {
         </FormGroup>
         </FormGroup>
     
-        <Link to='/dashboard'>
-        <input  onClick = { login } onSubmit = { onSubmit }type="submit"  block bsSize = "large" value="login" class="btn btn-success"/></Link>
+    {/*     <Link to='/dashboard'> */}
+        <input  onClick = { login } onSubmit = { onSubmit }type="submit"  block bsSize = "large" value="login" class="btn btn-success"/>{/* </Link> */}
+        {usernameLoginErr!==null? <h1>{usernameLoginErr}</h1>: <h1>Loading</h1>}
+       
+
         {/* <Button type="submit" block bsSize = "large" >Login</Button> */}
          {/* <Link /* to ='/dashboard'  >
             <Button onClick = { login } onSubmit = { onSubmit } block bsSize = "large" type = "submit"className = 'names' >Login </Button> 

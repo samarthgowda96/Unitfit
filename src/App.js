@@ -16,6 +16,7 @@ import Recipe from './components/recipe/Recipe'
 import Dashboard from './components/Dashboard/Dashboard';
 import index from './components/recipe2/src/index'
 import Intensity from './components/workout/Intensity'
+import MyAccount from './components/MyAccount/MyAccount'
 function App() {
   return (
     <>
@@ -27,6 +28,7 @@ function App() {
             <Route exact path="/register" component={Registration} />
             <Route exact path="/dashboard" component={AppWrapper} />
             <Route exact path="/recipe" component={Recipe} />
+            <Route exact path='/myAccount' component={MyAccount}/>
             <Route exact path="/myDashboard" component={Dashboard} />
             <Route exact path='/intensity' component={Intensity} />
             <Route exact path='/recipe/ourmenu' component={index} />

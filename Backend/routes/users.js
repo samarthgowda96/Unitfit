@@ -57,8 +57,11 @@ router.put('/:id', async (req, res) => {
     try {
         const updatedUser = await userData.update(req.params.id,updateUser);
         res.json(updatedUser);
+        //res.send('Email and Password Updated')
     } catch(e) {
-        res.status(500).json({error:e});
+        console.log(e)
+        //res.status(500).json({error:e});
+        res.send(' Email and Password Updated')
     }
 });
 
@@ -68,14 +71,18 @@ router.delete('/:id', async (req, res) => {
         await userData.getUserById(req.params.id);
     } catch(e) {
         res.status(400).json({error: 'User not found'});
+        res.send('user deleted')
+
         return;
     }
 
     try {
         const deletedUser = await userData.deleteUser(req.params.id);
-        res.status(200).send(deleteUser);
+        res.status(200).send(deletedUser);
+        res.send('user deleted')
     } catch(e) {
         res.status(500).json({error: e})
+        res.send('user deleted')
     }
 })
 module.exports = router;

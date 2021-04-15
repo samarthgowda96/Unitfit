@@ -9,80 +9,7 @@ import './login.css'
 
 function Registration() {
   
-    /*const [loggedIn, setLoggedIn] = React.useState(false);
-    const [loginForm , setLoginForm] = useState({
-        registeredEmail : "",
-        registeredPassword : ""
-    })
-    const [signUpForm, setSignUpForm] = React.useState({
-        email: '',
-        password: '',
-        firstName: '',
-        lastName: '',
-        phone: '',
-        location: '',
-        type: 'onlineUser', // OnlineUser set as default, because this is what is displayed initially in the type dropdown
-      })
-    const handleChange = (e) => {
-       if(e.target.name ==='registeredEmail'|| e.target.name==='registeredPassword'){
-           const updates = {...loginForm};
-           updates[e.target.name]= e.target.value;
-           setLoginForm({...updates})
-
-       }else {
-           const updates ={...signUpForm}
-           updates[e.target.name]= e.target.value;
-           setSignUpForm({...updates})
-       }
-        }
-
-    const handleSignup = async (e)=>{
-        e.preventDefault()
-        const data ={...signUpForm}
-        data.isSponsoredUser  = data.type ==="Sponsored User"
-
-        let allFilled = true;
-        for (let field in data) {
-         if (!data[field] && field !== 'isSponsoredUser') {
-            allFilled =false;
-      }
-    }
-      if(!allFilled){
-          //window.alert("You Should complete all the fields")
-      }else {
-          const response = await Ajax.createUser(data)
-
-      
-      if(response.Error){
-          window.alert("email already registered")
-      }else{
-          const loginResponse = await Ajax.userLogin(data);
-          localStorage.setItem('Unifit_token', loginResponse.token)
-          setLoggedIn(true)
-      }
-    }
-}
-    
-      React.useEffect(() => {
-        if (localStorage.getItem('unitfit_token')) {
-          setLoggedIn(true);
-        }
-      }, [])
-    
-      if (loggedIn) {
-        return (
-          <Redirect to='/' />
-        )
-      }
-    
-    /*const handleSubmitClick = (e) => {
-        e.preventDefault();
-        if(state.password === state.confirmPassword) {
-             
-        } else {
-            props.showError('Passwords do not match');
-        }sss
-    }*/
+   
 
     const [usernameRegistration, setUsernameRegistration]= useState('');
     const [passwordRegistration, setPasswordRegistration]= useState('');
@@ -95,7 +22,7 @@ function Registration() {
             password: passwordRegistration
         }).then((response) => {
             console.log(response.data._id);
-            const id = response.data._id
+            const id = response.data.email
             setUserMongoID(id)
             
         })
@@ -144,8 +71,10 @@ function Registration() {
    {/*  <Link to='/DashBoard'> */}
     <Button type='submit' onClick={register}>Submit</Button>
     {/* </Link> */}
+
     </div>
     </Segment>
+  
     </div>
     
     

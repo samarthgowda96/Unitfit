@@ -71,6 +71,8 @@ render(){
         />
         <Menu.Item
           name='My Profile'
+          as={NavLink}
+          to='myAccount'
           active={activeItem === 'friends'}
           onClick={this.handleItemClick}
         />

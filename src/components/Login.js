@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { Link } from 'react-router-dom';
+import UserStore from '../../stores/UserStore'
 
 import './login.css'
 import axios from 'axios'
@@ -12,12 +13,14 @@ import { useContext } from "react";
 
 export default function Login() {
 
-    const [loginStatus, setLoginStatus] = useContext(LoginContext)
+    //const [loginStatus, setLoginStatus] = useContext(LoginContext)
+    const [loginStatus,setLoginStatus]=useState(false)
     const [usernameLogin, setUsernameLogin] = useState('');
     const [passwordLogin, setPasswordLogin] = useState('');
     const [usernameLoginErr, setUsernameLoginErr] = useState({});
     const [passwordLoginErr, setPasswordLoginErr] = useState({});
-    const [errors,setErrors]=useState('')
+    const [errors,setErrors]=useState({})
+    
     const [input,setInput]=useState({})
     /* const login = () => {
         Axios.post('http://localhost:3009/login', {
@@ -37,21 +40,65 @@ export default function Login() {
         })
     }
  */
+useEffect( async ()  => {
+    try{
+        let res = await axios.post('http://localhost:3005/users/IsloggedIn')
+        let result = await res.json()
+        if(result&& result.success){
+            UserStore.loading=false;
+            UserStore.isLoggedIn=true
+            UserStore.email=result.email
+        }
+        else{
+            UserStore.loading= false 
+            UserStore.isLoggedIn=false
+        }
+    }
+    catch(e){
+        UserStore.loading=false;
+        UserStore.isLoggedIn=false;
+
+    }
+
+},[])
+
+const dologout= async() => {
+    try{
+        let res = await axios.post('http://localhost:3005/users/logout')
+        let result = await res.json()
+        if(result&& result.success){
+            
+            UserStore.isLoggedIn=false
+            UserStore.email=''
+        }
+        else{
+            UserStore.loading= false 
+            UserStore.isLoggedIn=false
+        }
+    }
+    catch(e){
+        console.log(e)
+
+    }
+}
+
+
 
  const login=() => {
      axios.post('http://localhost:3005/users/login',{
          email: usernameLogin,
          password: passwordLogin
      }).then((response) =>{
-         console.log(response)
+         console.log(response.data)
         
-         if(response.data.message){
-             const error= response.data.message;
+         if(response.data==='Invalid creds'){
+             const error= response.data;
              setErrors(error)
              alert("Your Email or Password is Invalid")
              setLoginStatus(false)
-         }
+         }else{
          setLoginStatus(true)
+         }
 
      })
  }
@@ -119,7 +166,10 @@ export default function Login() {
 
 
     return (
+        
         <div className = "Login" >
+            
+            
             <h2 className = 'titlelogin' > Sign In </h2>
             <form onSubmit={onSubmit}> 
             <FormGroup controlId = "email" bsSize = "large" >
@@ -141,16 +191,19 @@ export default function Login() {
     }
 }
 />
+
         
         </FormGroup>
         </FormGroup>
-        <input  onClick = { login } onSubmit = { onSubmit }type="submit"  block bsSize = "large" value="login" class="btn btn-success"/>
+    
+        <Link to='/dashboard'>
+        <input  onClick = { login } onSubmit = { onSubmit }type="submit"  block bsSize = "large" value="login" class="btn btn-success"/></Link>
         {/* <Button type="submit" block bsSize = "large" >Login</Button> */}
          {/* <Link /* to ='/dashboard'  >
             <Button onClick = { login } onSubmit = { onSubmit } block bsSize = "large" type = "submit"className = 'names' >Login </Button> 
         </Link>  */}
          {/* <Button onClick = { login } onSubmit = { onSubmit } block bsSize = "large" type = "submit"className = 'names' >Login </Button> */} 
-         {errors}
+       
         </form>
 
     </div>

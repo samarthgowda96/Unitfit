@@ -74,7 +74,7 @@ function Registration() {
 
     </div>
     </Segment>
-  
+
     </div>
     
     

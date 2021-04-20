@@ -10,7 +10,7 @@ First install all the dependencies by, npm install
 To run the client locally, run npm start. A server should start on 127.0.0.1:3000.
 To run the server locally, run node server. A server should start on 127.0.0.1:3005.
 
-To develop the server locally, you'll need a database called "unitfit" running locally. Install MySql. MySql will need to be running alongside the local server in order for Database calls to be made.
+To develop the server locally, you'll need a database called "unitfit" running locally. Install MongoDB. MongoDB will need to be running alongside the local server in order for Database calls to be made.
 ## Available Scripts
 
 In the project directory, you can run:

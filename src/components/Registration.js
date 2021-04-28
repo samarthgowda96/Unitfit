@@ -24,6 +24,7 @@ function Registration() {
             console.log(response.data._id);
             const id = response.data.email
             setUserMongoID(id)
+            alert('Account Has been successfully registered')
             
         })
     }
@@ -68,9 +69,9 @@ function Registration() {
     }}
     />
    
-   {/*  <Link to='/DashBoard'> */}
+    <Link to='/login'> 
     <Button type='submit' onClick={register}>Submit</Button>
-    {/* </Link> */}
+    </Link> 
 
     </div>
     </Segment>

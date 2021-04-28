@@ -8,6 +8,7 @@ import axios from 'axios'
 
 import { LoginContext } from '../context/LoginContext'
 import { useContext } from "react";
+import unitfit from './unitfit.png'
 
 
 
@@ -157,6 +158,7 @@ export default function Login() {
         
         <div className = "Login" >
             
+            <img src={unitfit} style={{border:'5px solid grey'}}/>
             
             <h2 className = 'titlelogin' > Sign In </h2>
             <form onSubmit={onSubmit}> 
@@ -184,8 +186,8 @@ export default function Login() {
         </FormGroup>
         </FormGroup>
     
-    {/*     <Link to='/dashboard'> */}
-        <input  onClick = { login } onSubmit = { onSubmit }type="submit"  block bsSize = "large" value="login" class="btn btn-success"/>{/* </Link> */}
+     <Link to='/dashboard'> 
+        <input  onClick = { login } onSubmit = { onSubmit }type="submit"  block bsSize = "large" value="login" class="btn btn-success"/> </Link> 
         {usernameLoginErr!==null? <h1>{usernameLoginErr}</h1>: <h1>Loading</h1>}
        
 

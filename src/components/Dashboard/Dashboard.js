@@ -246,7 +246,7 @@ class Dashboard extends Component{
         const data = {
             Data: dataFromDashBoard
         }
-        axios.post('https://unit-fit-default-rtdb.firebaseio.com', data)
+        axios.post('https://unifit-e2c05-default-rtdb.firebaseio.com/myDashboard.json', data)
             .then(response => {
                 this.setState({ loading: false });
             })

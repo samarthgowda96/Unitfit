@@ -16,7 +16,7 @@ function MyAccount(){
 
     },[])
      const userName = () => {
-        axios.get('http://localhost:3005/users', {
+        axios.get('http://localhost:3005/users/6089c7a7123f3460855b233d', {
            
         }).then((response) => {
             console.log(response.data.email);
@@ -26,7 +26,7 @@ function MyAccount(){
         })
     } 
    const updateDetails=async()=>{
-        await axios.put('http://localhost:3005/users',{
+        await axios.put('http://localhost:3005/users/6089c7a7123f3460855b233d',{
             email:updatedEmail,
             password:updatedPassword
         }).then((response) =>
@@ -40,7 +40,7 @@ function MyAccount(){
     
 
     const deleteAccount=()=>{
-         axios.delete('http://localhost:3005/users')
+         axios.delete('http://localhost:3005/users/6089c7a7123f3460855b233d')
         .then((response)=>{
             console.log(response.data)
             //setDeleteSucess(false)

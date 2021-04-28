@@ -83,7 +83,7 @@ export default function Login() {
          if(response.data==='Invalid creds'){
              const error= response.data;
              setErrors(error)
-             alert("Your Email or Password is Invalid")
+             //alert("Your Email or Password is Invalid")
              setLoginStatus(false)
          }else{
          setLoginStatus(true)

@@ -19,7 +19,7 @@ class FetchData extends Component {
     }
 
     fetchData() {
-        axios.get('https://unit-fit-default-rtdb.firebaseio.com/myDashboard.json')
+        axios.get('https://unifit-e2c05-default-rtdb.firebaseio.com/myDashboard.json')
             .then(response => {
                 const fetchData = [];
                 let count = 0

@@ -158,7 +158,7 @@ export default function Login() {
         
         <div className = "Login" >
             
-            <img src={unitfit} style={{border:'5px solid grey'}}/>
+            <img src={unitfit} style={{border:'4px solid grey'}}/>
             
             <h2 className = 'titlelogin' > Sign In </h2>
             <form onSubmit={onSubmit}> 

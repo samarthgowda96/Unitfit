@@ -11,23 +11,31 @@ function Registration() {
   
    
 
-    const [usernameRegistration, setUsernameRegistration]= useState('');
-    const [passwordRegistration, setPasswordRegistration]= useState('');
-    const [userMongoID, setUserMongoID]= useState('');
+    
+    const [email, setEmail]= useState('');
+    const [password, setPassword]= useState('');
+    const [error, setError]=useState(false)
+
     
 
-    const register = () => {
-        axios.post('http://localhost:3005/users/register', {
-            email: usernameRegistration,
-            password: passwordRegistration
-        }).then((response) => {
-            console.log(response.data._id);
-            const id = response.data.email
-            setUserMongoID(id)
-            alert('Account Has been successfully registered')
+    const register = async(e) => {
+        e.preventDefault();
+        setError(false)
+        try {
+            const res= await axios.post('http://localhost:5000/register', {
+                email:email,
+                password:password
+            });
+            res.data&& window.location.replace('/login')
+            setError(true)
             
-        })
+        } catch (error) {
+            console.log(error)
+            setError(true)
+        }
+       
     }
+    
     
 
       
@@ -53,7 +61,7 @@ function Registration() {
       validators={['required']}
       errorMessages={['this field is required']}
       onChange={(e)=>{
-        setUsernameRegistration(e.target.value);
+        setEmail(e.target.value);
     }}
     />
     
@@ -65,7 +73,7 @@ function Registration() {
       id='form-input-password'
       type='password'
       onChange={(e)=>{
-        setPasswordRegistration(e.target.value);
+        setPassword(e.target.value);
     }}
     />
    
